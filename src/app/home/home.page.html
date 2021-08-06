@@ -1,20 +1,153 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="goq"></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      <strong>Inicio</strong>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav
+    (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)" style="--background: black !important;">
+    <ion-slide *ngFor="let s of sliderOne.slidesItems" >
+      <img src="{{s.id}}" style="width: 100%;height: 190%; object-fit: cover;">
+      <!-- <span class="slide-text">Slide id {{s.id}}</span> -->
+    </ion-slide>
+  </ion-slides>
+  <div class="row">
+    <div class="col-12" style="text-align: center;">
+      <h1 style="color: rgb(23, 125, 233);"><b>¿Que vas a servirte?</b></h1>
+    </div>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div >
+    <div >
+      <h4 style="margin-left: 15px;">Tilapia</h4>
+      <!-- <ion-col size='12'> -->
+      <ion-card  style="margin-top: 5px; box-shadow: none;">
+        <ion-row>
+          <ion-col size="3">
+            <img src="assets/images/1.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+          </ion-col>
+          <ion-col size='9'>
+            <ion-label>
+              <h2>Tilapia frita</h2>
+              <h3>Tilapia frita con papas</h3>
+              <p>$ 2,50 </p>
+              <div style="width: 100%; text-align: right; margin-top: -20px;">
+                <ion-button color="danger" style="text-transform: none;"
+                   size="small" (click)="restar()">
+                  <ion-icon style="color: #fff;" name="remove"></ion-icon>
+                </ion-button><strong style="font-size: 20px;margin-top: 10px;vertical-align: middle;margin-left: 5px; margin-right: 5px;">{{cantidad}}</strong>
+                <ion-button (click)="sumar()" color="primary" style="text-transform: none;"
+                   size="small">
+                  <ion-icon style="color: #fff;" name="add"></ion-icon>
+                </ion-button>
+                
+                <!-- <ion-button color="success" *ngIf="!habilitar" style="text-transform: none;"
+                  (click)="confirmar_vaciar_carrito()" size="small">
+                  <ion-icon style="color: #fff;" name="add"></ion-icon>
+                </ion-button> -->
+              </div>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card  style="margin-top: 5px; box-shadow: none;">
+        <ion-row>
+          <ion-col size="3">
+            <img src="assets/images/5.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+          </ion-col>
+          <ion-col size='9'>
+            <ion-label>
+              <h2>Tilapia frita roja</h2>
+              <h3>Tilapia frita con papas o patacon</h3>
+              <p>$ 4,50 </p>
+              <div style="width: 100%; text-align: right; margin-top: -20px;">
+                <ion-button color="danger" style="text-transform: none;"
+                   size="small" (click)="quitar_del_carrito(prod.idproducto)">
+                  <ion-icon style="color: #fff;" name="remove"></ion-icon>
+                </ion-button><strong style="font-size: 20px;margin-top: 10px;vertical-align: middle;margin-left: 5px; margin-right: 5px;">0</strong>
+                <ion-button (click)="abrir_modal(prod.idproducto, prod.foto)" color="primary" style="text-transform: none;"
+                   size="small">
+                  <ion-icon style="color: #fff;" name="add"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card  style="margin-top: 5px; box-shadow: none;">
+        <ion-row>
+          <ion-col size="3">
+            <img src="assets/images/6.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+          </ion-col>
+          <ion-col size='9'>
+            <ion-label>
+              <h2>Tilapia al vapor</h2>
+              <h3>Tilapia al vapor con papas o patacón</h3>
+              <p>$ 3,00 </p>
+              <div style="width: 100%; text-align: right; margin-top: -20px;">
+                <ion-button color="danger" style="text-transform: none;"
+                   size="small" (click)="quitar_del_carrito(prod.idproducto)">
+                  <ion-icon style="color: #fff;" name="remove"></ion-icon>
+                </ion-button><strong style="font-size: 20px;margin-top: 10px;vertical-align: middle;margin-left: 5px; margin-right: 5px;">0</strong>
+                <ion-button (click)="abrir_modal(prod.idproducto, prod.foto)" color="primary" style="text-transform: none;"
+                   size="small">
+                  <ion-icon style="color: #fff;" name="add"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+
+    <div >
+      <h4 style="margin-left: 15px;">Bebidas</h4>
+      <!-- <ion-col size='12'> -->
+      <ion-card  style="margin-top: 5px; box-shadow: none;">
+        <ion-row>
+          <ion-col size="3">
+            <img src="assets/images/coca.jpg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+          </ion-col>
+          <ion-col size='9'>
+            <ion-label>
+              <h2>Cocacola</h2>
+              <h3>2,5 litros</h3>
+              <p>$ 2,50 </p>
+              <div style="width: 100%; text-align: right; margin-top: -20px;">
+                <ion-button color="danger" style="text-transform: none;"
+                   size="small" (click)="quitar_del_carrito(prod.idproducto)">
+                  <ion-icon style="color: #fff;" name="remove"></ion-icon>
+                </ion-button><strong style="font-size: 20px;margin-top: 10px;vertical-align: middle;margin-left: 5px; margin-right: 5px;">0</strong>
+                <ion-button (click)="abrir_modal(prod.idproducto, prod.foto)" color="primary" style="text-transform: none;"
+                   size="small">
+                  <ion-icon style="color: #fff;" name="add"></ion-icon>
+                </ion-button>
+                
+                <!-- <ion-button color="success" *ngIf="!habilitar" style="text-transform: none;"
+                  (click)="confirmar_vaciar_carrito()" size="small">
+                  <ion-icon style="color: #fff;" name="add"></ion-icon>
+                </ion-button> -->
+              </div>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card> 
+    </div>     
   </div>
 </ion-content>
+<ion-footer style="text-align: center;" class="ion-no-border">
+  <!-- <ion-toolbar transparent> -->
+    <ion-button shape="round" color="success" *ngIf="total != 0" (click)="carrito()" style="text-transform: none;">
+      <ion-icon name="cart-sharp" style="color: #fff; margin-right: 10px; font-size: 25px;"></ion-icon> Pedir  por $ {{total}}
+    </ion-button>
+
+  <!-- </ion-toolbar> -->
+</ion-footer>

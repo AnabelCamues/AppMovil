@@ -25,3 +25,51 @@
 #container a {
   text-decoration: none;
 }
+
+.swiper-wrapper{
+  background-color: black !important;
+}
+
+.portada{
+  width: 100%;
+  object-fit: cover;
+}
+.titulos-card{
+  position: absolute;
+  top: 160px;
+  left: 0px;
+  width: 100%;
+  h3{
+      margin: 0px;
+      padding: 0px;
+      color: #fff;
+  }
+  p{
+      margin: 0px;
+      padding: 0px;
+      color: #c0c0c0;
+  }
+  ion-icon{
+      color: #fff;
+      font-size: 30px;
+  }
+  
+}
+h2{
+  font-size: 16px;
+  color: #333;
+}
+h3{
+  font-size: 12px;
+  color: #888;
+}
+p{
+  font-size: 14px;
+  color: #333;
+}
+.card-content-md h3, .card-content-md h4, .card-content-md h5, .card-content-md h6 {
+  font-weight: 600;
+  color: #333
+
+;
+}

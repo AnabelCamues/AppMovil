@@ -1,0 +1,50 @@
+<ion-content fullscreen>
+  <div id="map" style="width: 100%; height: 100%;"></div>
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-back-button defaultHref="/" icon="close-circle-sharp" color="dark"></ion-back-button>
+  </ion-fab>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar transparent>
+    <div style="width: 100%; background-color: #2880ba;padding: 0px;color: #fff;">
+      <ion-row style="margin: 0px;" (click)="getCurrentLocation()">
+        <ion-col size="2" style="margin: 0px;" style="vertical-align: middle;">
+
+          <ion-icon name="locate-sharp" style="font-size: 25px; margin-top: 10px; margin-left: 12px;color: #fff;"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="margin: 0px;">
+          <p style="margin: 5px;"><strong>Pulsa aquí</strong> para cargar tu <strong>ubicación actual.</strong></p>
+        </ion-col>
+        <ion-col size="2" style="margin: 0px; text-align: right;">
+
+          <ion-icon name="chevron-forward-outline" style="font-size: 25px;color: #fff;margin: 10px;"></ion-icon>
+        </ion-col>
+
+      </ion-row>
+      <div  style="background-color: #fff; color: #888;">
+        <ion-row style="margin: 0px;" (click)="getCurrentLocation()">
+          <ion-col size="2" style="margin: 0px;" style="vertical-align: middle;">
+  
+            <ion-icon name="location-sharp" style="font-size: 25px; margin-left: 12px;color: #EA4335;"></ion-icon>
+          </ion-col>
+          <ion-col size="8" style="margin: 0px;">
+            <p style="margin: 0px;"><strong>O arrastra el marcador</strong> hasta la ubicación de entrega.</p>
+          </ion-col>
+          <ion-col size="2" style="margin: 0px; text-align: right;">
+  
+            <ion-icon name="chevron-forward-outline" style="font-size: 25px;color: #fff;"></ion-icon>
+          </ion-col>
+  
+        </ion-row>
+        <div style="padding: 0px 16px;">
+          <ion-button expand="block" shape="round" (click)="get_ubicacion()"
+          routerDirection="back" style="text-transform: none;font-weight: 800;">
+          Confirmar ubicación</ion-button></div>
+      </div>
+    </div>
+
+  </ion-toolbar>
+
+</ion-footer>

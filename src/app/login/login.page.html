@@ -1,0 +1,42 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content style="background-color: #fff !important;">
+
+  <div class="ion-padding" style="text-align: center;margin-top: 20%;">
+    <img src="assets/images/logo.jpg" style="width: 150px;" alt="">
+    <h2 style="color: #787877;"><strong>Yahuarcocha APP</strong></h2>
+  </div>
+  <div class="ion-padding" style="text-align: center;margin-top: 5%;">
+    <div class="ion-padding" style="border-radius: 10px; background-color:#FFFFFF !important;">
+      <br>
+      <ion-item lines="none"
+        style="border-radius: 8px; border:solid 1px #BFBFBF; box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);">
+        <ion-input autocorrect="on" mode="ios" type="text" [(ngModel)]="email" clearInput="true" clearOnEdit="true"
+          inputmode="text" placeholder="Correo" required="true"></ion-input>
+        <ion-icon name="person-sharp" color="medium" slot="end"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-item lines="none"
+        style="border-radius: 8px; border:solid 1px #BFBFBF; box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);">
+        <ion-input autocorrect="on" type="password" [(ngModel)]="contrasena" clearInput="true" clearOnEdit="true"
+          inputmode="text" placeholder="Ingresa tu contraseña" required="true">
+        </ion-input>
+        <ion-icon name="finger-print-sharp" color="medium" slot="end"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-button mode="ios" shape="block" color="primary" style="text-transform: none;--color: #fff;" (click)="login()">
+        Ingresar</ion-button>
+      <br>
+      <p style="color: #888;" [routerLink]="['/register']">¿No tiene cuenta? <strong style="color: blue;">REGISTRATE AQUÍ</strong>
+      </p>
+
+      <p style="color: #888;" (click)="signup()">¿Olvidó su contraseña?
+      </p>
+    </div>
+  </div>
+
+</ion-content>

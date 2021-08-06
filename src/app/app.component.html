@@ -1,3 +1,57 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start"  menuId="goq" contentId="principal" class="my-custom-menu" style="--width: 100%;">
+    <!-- <ion-menu side="start" (ionWillOpen)="get_nombre()" (ionDidOpen)="get_nombre()" menuId="goq" contentId="principal" class="my-custom-menu" style="--width: 100%;"> -->
+    <ion-header color="primary" class="ion-no-border">
+      <div class="profile_box" style="padding: 10px 20px 10px 20px; background-color: #3880ff !important;">
+        <ion-menu-toggle auto-hide="false" style="text-align: right;">
+          <br>
+          <h2 style="color: white;"><b>Hola, Ruby!</b></h2>
+          <br>
+        </ion-menu-toggle>
+      </div>
+    </ion-header>
+    <ion-content >
+      <ion-list id="caja-flotante" style="background-color: #3880ff !important; padding-bottom: 0px;">
+        <ion-menu-toggle >
+          
+          <ion-item  style="border-radius: 20px 20px 0px 0px;" lines="none">
+            <h2><strong>Menú</strong></h2>
+          </ion-item>
+          <ion-item [routerLink]="['home']" routerLinkActive="router-link-active"  lines="none">
+            <ion-icon name="home-outline" color="dark" style="margin-right: 20px; font-size: 27px;" slot="start"></ion-icon>
+            <ion-label>
+              <h2 style="color: #111;">Inicio</h2>
+              <p style="color: #111;">Página principal</p>
+            </ion-label>
+          </ion-item>
+          <ion-item [routerLink]="['home']" routerLinkActive="router-link-active"  lines="none">
+            <ion-icon name="clipboard-outline" color="dark" style="margin-right: 20px; font-size: 27px;" slot="start"></ion-icon>
+            <ion-label>
+              <h2 style="color: #111;">Mis pedidos</h2>
+              <p style="color: #111;">Listado de pedidos</p>
+            </ion-label>
+          </ion-item>
+          <ion-item [routerLink]="['home']" routerLinkActive="router-link-active"  lines="none">
+            <ion-icon name="bulb-outline" color="dark" style="margin-right: 20px; font-size: 27px;" slot="start"></ion-icon>
+            <ion-label>
+              <h2 style="color: #111;">Acerca de</h2>
+              <p style="color: #111;">Que es Yahuarcocha App</p>
+            </ion-label>
+          </ion-item>
+          
+
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-item [routerLink]="['login']" routerLinkActive="router-link-active" lines="none">
+        <ion-icon name="exit-outline" color="dark" slot="start"></ion-icon>
+        <ion-label>
+          <h2 style="color: #111;" >Cerrar sesión</h2>
+          <!-- <h2 style="color: #111;" *ngIf="!nombre" (click)="cerrar_sesion()">Iniciar sesión</h2> -->
+        </ion-label>
+      </ion-item>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="principal"></ion-router-outlet>
 </ion-app>

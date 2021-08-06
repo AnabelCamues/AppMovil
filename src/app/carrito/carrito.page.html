@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" icon="chevron-back-outline" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tu carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" fullscreen>
+  <!-- <ion-button color="primary" (click)="facturaData()">  Test</ion-button> -->
+  <p style="margin-left: 5%; margin-top: 10px; color: #666;">Detalles de entrega</p>
+  <div style="width: 100%;" >
+    <ion-item class="descripcion" style="margin: 16px ;">
+      <ion-textarea color="dark" [(ngModel)]="descripcion" placeholder="Agrega alguna descripción, Ej:servilletas, cucharas."></ion-textarea>
+    </ion-item>
+  </div>
+  <ion-item lines="none">
+    <ion-label slot="start">
+      <p *ngIf="!nombre">
+        <ion-icon name="person-circle-outline"></ion-icon> Cliente
+      </p>
+      <p *ngIf="nombre">
+        <ion-icon name="person-circle-outline"></ion-icon> {{ nombre }}
+      </p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item style="--background: transparent !important;" (click)="abrir_facturacion()">
+    <ion-icon name="receipt-outline" slot="start"></ion-icon>
+    <ion-label>
+      <h2>Datos de factura</h2>
+      <p style="color: #888;" *ngIf="!nombre_fac">Consumidor final</p>
+      <p *ngIf="nombre_fac">{{ nombre_fac }} - {{ cedula_fac }} </p>
+    </ion-label>
+    <ion-icon *ngIf="!nombre_fac" name="chevron-forward-outline" color="medium" slot="end"></ion-icon>
+    <ion-icon *ngIf="nombre_fac" color="success" name="checkmark-circle-sharp" slot="end"></ion-icon>
+  </ion-item>
+
+  <!-- <ion-item style="--background: transparent !important;" (click)="abrir_metodo_pago()">
+    <ion-icon name="wallet-outline" slot="start"></ion-icon>
+    <ion-label>
+      <h2>Método de pago</h2>
+      <p style="color: #888;" *ngIf="!metodo_pago">Sin agregar</p>
+      <p *ngIf="metodo_pago"> {{ metodo_pago }} </p>
+    </ion-label>
+    <ion-icon *ngIf="!metodo_pago" name="chevron-forward-outline" color="medium" slot="end"></ion-icon>
+    <ion-icon *ngIf="metodo_pago" color="success" name="checkmark-circle-sharp" slot="end"></ion-icon>
+  </ion-item> -->
+
+  <ion-item style="--background: transparent !important;" (click)="agregar_ubicacion()">
+    <ion-icon name="location-outline" slot="start"></ion-icon>
+    <ion-label>
+      <h2>Seleccionar ubicación</h2>
+      <p style="color: #888;" *ngIf="!ubicacion">Sin dirección</p>
+      <p *ngIf="ubicacion">{{ ubicacion }}</p>
+    </ion-label>
+    <ion-icon *ngIf="!ubicacion" name="chevron-forward-outline" color="medium" slot="end"></ion-icon>
+    <ion-icon *ngIf="ubicacion" color="success" name="checkmark-circle-sharp" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item style="--background: transparent !important;" >
+    <ion-icon name="cash-outline" slot="start"></ion-icon>
+    <ion-label>
+      <h2>Subtotal</h2>
+      <p style="color: #888;" *ngIf="!total_pagar">Sin agregar</p>
+      <p *ngIf="total_pagar"><strong style="font-size: 20px;">$ {{ total_pagar }}</strong></p>
+    </ion-label>
+    <ion-icon *ngIf="!total_pagar" name="chevron-forward-outline" color="medium" slot="end"></ion-icon>
+    <ion-icon *ngIf="total_pagar" color="success" name="checkmark-circle-sharp" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item style="--background: transparent !important;" >
+    <ion-icon name="rocket-outline" slot="start"></ion-icon>
+    <ion-label>
+      <h2>Costo de envío</h2>
+      <p style="color: #888;" *ngIf="!envio">Sin agregar</p>
+      <p *ngIf="envio"><strong style="font-size: 20px;">$ {{ envio }}</strong></p>
+    </ion-label>
+    <ion-icon *ngIf="!envio" name="chevron-forward-outline" color="medium" slot="end"></ion-icon>
+    <ion-icon *ngIf="envio" color="success" name="checkmark-circle-sharp" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item style="--background: transparent !important;" >
+    <ion-icon  slot="start"></ion-icon>
+    <ion-label>
+      <h1>Total</h1>
+      <!-- <p style="color: #888;" *ngIf="!total_factura">Sin agregar</p> -->
+      <p ><strong style="font-size: 20px;">$ {{total_factura}}</strong></p>
+    </ion-label>
+    <ion-icon *ngIf="!total_factura" name="chevron-forward-outline" color="medium" slot="end"></ion-icon>
+    <ion-icon *ngIf="total_factura" color="success" name="checkmark-circle-sharp" slot="end"></ion-icon>
+  </ion-item>
+
+  <div class="mas-produtos">
+    <h5 style="margin-left: 5%; color: #666;">Detalle de productos</h5>
+    <ion-row>
+      <ion-col size="3" style="text-align: right;">
+        <img src="assets/images/1.jpg" style="width: 90px;height: 75px;object-fit: cover; border-radius: 8px;">
+      </ion-col>
+      <ion-col size="6">
+        <p style="color: #333; margin: 0px;">Tilapia frita</p>
+        <h4 style="margin: 0px; color: #888;">$ 7,50</h4>
+      </ion-col>
+      <ion-col size="3" style="text-align: center;">
+        <br>
+          <p>$ 2,50 c/u</p>
+          <p>x 3</p>
+      </ion-col>
+      <ion-col size="12" style=" padding: 4px 6px;">
+        <ion-button  expand="block" shape="round" color="success" style=" padding: 0px; text-transform: none;"
+          (click)="presentAlert()">Finalizar pedido</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </div>
+</ion-content>
+<!-- <ion-footer>
+  <ion-toolbar>
+    <div style="width: 100%;">
+      <ion-row style="margin: 0px; padding: 0px;">
+        <ion-col size="6" style="margin: 0px; padding: 0px;">
+        </ion-col>
+        <ion-col size="6" style="text-align: right; margin: 0px; padding: 4px;">
+        </ion-col>
+
+        <ion-col size="8" style=" padding: 4px 6px;">
+          <ion-button  expand="block" shape="round" color="success" style=" padding: 0px; text-transform: none;"
+            (click)="verificar_sesion()">Finalizar pedido</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-footer> -->
